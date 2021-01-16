@@ -36,9 +36,18 @@
               },
               backgroundColor: '#f1f8e9'
             };
+            
+            var my_div = document.getElementById('chart_div');
+            var my_chart = new google.visualization.ChartType(chart_div);
 
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
+            google.visualization.events.addListener(my_chart, 'ready', function () {
+              my_div.innerHTML = '<img src="' + my_chart.getImageURI() + '">';
+            });
+
+            my_chart.draw(data);
+        
+            //var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            //chart.draw(data, options);
         }
       
     </script>
